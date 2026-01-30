@@ -50,3 +50,37 @@ pip install -m requirements.txt
 fastapi dev app.py
 
 ```
+
+
+### /upload/
+
+
+```
+
+{
+    "file_content": {
+        "content": content_text  
+        "additional_kwargs": {},
+        "response_metadata": {
+            "finish_reason": "STOP",
+            "model_name": "gemini-2.5-flash-lite",
+            "safety_ratings": [],
+            "model_provider": "google_genai"
+        },
+        "type": "ai",
+        "name": null,
+        "id": "lc_run--019c107d-d296-7b30-88bc-c2c0fdab81da-0",
+        "tool_calls": [],
+        "invalid_tool_calls": [],
+        "usage_metadata": {
+            "input_tokens": 1696,
+            "output_tokens": 580,
+            "total_tokens": 2276,
+            "input_token_details": {
+                "cache_read": 0
+            }
+        }
+    }
+}
+
+```
