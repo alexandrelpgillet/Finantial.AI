@@ -1,4 +1,8 @@
-Alexandre P Gillet
+from transformers import AutoTokenizer
+import spacy
+import re
+
+text = '''Alexandre P Gillet
 AV MILAO COND TOPAZIO 2295 QD09 LT0 APT504 BL03, RESIDENCIAL ELDORADO, GOIANIA, GO
 - 74367635
 Olá, Alexandre, esta é sua fatura de
@@ -257,5 +261,65 @@ Fala
 Tarifas
 Tabela de tarifas disponível nas
 agências BB ou acesse bb.com.br
-Página 3/3
-
+Página 3/3'''
+
+
+
+
+
+nlp = spacy.load("pt_core_news_sm")
+
+
+doc = nlp(text)
+
+words_fix = [ 
+              
+              t.text for t in doc
+              if t.pos_ in ["PROPN", "NUM", "NOUN", "SYM"] or t.text.lower() == "r$"
+              
+              ]
+
+
+text_filtred = " ".join(words_fix)
+
+
+tokenizer = AutoTokenizer.from_pretrained("google/gemma-2-2b")
+
+
+
+tokensBeforeFilter= tokenizer.encode(text)
+
+tokensAfterFilter = tokenizer.encode(text_filtred)
+
+print(f"Total de tokens antes do filtro = ${len(tokensBeforeFilter)}")
+print(f"Total de tokens após filtro = {len(tokensAfterFilter)}")
+
+
+print(f"Ganhos = {len(tokensBeforeFilter)/len(tokensAfterFilter) *100 - 100}")
+
+
+
+output = open("textFiltred.txt", "w")
+
+output.write(text_filtred)
+
+output.close()
+
+
+##print(text_filtred)
+
+
+
+'A partir do .txt extraia o valor total da fatura e os faça uma tabela com a descrição de cada gasto no seguinte formato =  Data, Descrição , Valor.'
+
+
+
+
+
+
+
+
+    
+    
+    
+    

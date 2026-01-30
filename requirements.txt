@@ -2,3 +2,10 @@ pymupdf
 matplotlib
 pandas
 numpy
+pip
+setuptools
+wheel
+spacy
+trasnformers
+pytorch
+fastapi

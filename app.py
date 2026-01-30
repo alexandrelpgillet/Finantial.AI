@@ -1,21 +1,29 @@
-import pymupdf
+
+from fastapi import FastAPI, File, UploadFile
+from typing import Union
+from pdfRead import pdf_Process
+from nlpFilter import filterText
 
 
-doc = pymupdf.open("teste.pdf")
+
+app = FastAPI()
+
+@app.get("/status")
+def read_root():
+    return {"Status": "Online"}
 
 
-out = open("output.txt", "wb")
-
-
-print(doc.ShownPages)
-for page in doc:
+@app.post("/upload/")
+async def receiveUploadFile(file:UploadFile):
     
-    text = page.get_text().encode("utf8")
-    
-    out.write(text)
-    
-    out.write(bytes((12,)))
-    
-    
-out.close()
-    
+   
+   content = await file.read() 
+   
+   
+   text = pdf_Process(content)
+   
+   text = filterText(text)
+   
+   
+   
+   return {"file_content":text}
