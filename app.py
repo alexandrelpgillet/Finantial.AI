@@ -3,7 +3,7 @@ from fastapi import FastAPI, File, UploadFile
 from typing import Union
 from pdfRead import pdf_Process
 from nlpFilter import filterText
-
+from agent import getInvoice
 
 
 app = FastAPI()
@@ -24,6 +24,7 @@ async def receiveUploadFile(file:UploadFile):
    
    text = filterText(text)
    
+   response = getInvoice(text)
    
-   
-   return {"file_content":text}
+
+   return {"file_content":response}

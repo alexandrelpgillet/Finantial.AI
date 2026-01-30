@@ -40,3 +40,13 @@ Financy.AI is a software was a service(SAAS), your general porpouse is managemen
 * System Operational : Ubuntu 24.04 LTS;
 
 
+### Start project
+
+```
+source .venv/bin/activate
+
+pip install -m requirements.txt
+
+fastapi dev app.py
+
+```

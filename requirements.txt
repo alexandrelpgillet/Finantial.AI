@@ -9,3 +9,6 @@ spacy
 trasnformers
 pytorch
 fastapi
+langchain
+langchain-google-genai
+dotenv
