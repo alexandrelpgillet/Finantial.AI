@@ -1,0 +1,4 @@
+pymupdf
+matplotlib
+pandas
+numpy
