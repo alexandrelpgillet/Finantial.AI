@@ -14,9 +14,9 @@ class Spent(BaseModel):
 
 class Invoice(BaseModel):
     
-    total: str = Field(description="Valor total")
+    total: str = Field(description="Valor total gasto com símbolo de moeda, ex : R$ 99,00")
     spents: List[Spent] = Field(description="Lista de gastos")
-
+    tax: str = Field(description="Valor total de gasto envolvendo impostos e taxas bancárias, como IOF e juros, com símbolo de moeda, ex : R$ 83,00  ")
 def getInvoice(content :str):
     
     
