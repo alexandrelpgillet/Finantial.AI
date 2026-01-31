@@ -11,12 +11,13 @@ class Spent(BaseModel):
     date:str = Field(description="Data")
     description:str = Field(description="Descrição")    
     value:str = Field(description="Valor gasto com o símbolo da moeda, ex: R$ 10,00")
+    category:str = Field(description="Categoria do gasto a partir da descrição do gasto, podendo ser Alimentação ou Supermercado ou Lazer ou Transporte ou Despesas ou Outros")
 
 class Invoice(BaseModel):
     
     total: str = Field(description="Valor total gasto com símbolo de moeda, ex : R$ 99,00")
     spents: List[Spent] = Field(description="Lista de gastos")
-    tax: str = Field(description="Valor total de gasto envolvendo impostos e taxas bancárias, como IOF e juros, com símbolo de moeda, ex : R$ 83,00  ")
+    tax: str = Field(description="Valor total de gasto envolvendo impostos e taxas bancárias, como IOF e juros e gastos com descrição IOF e Juros, com símbolo de moeda, ex : R$ 83,00  ")
 def getInvoice(content :str):
     
     
@@ -56,7 +57,7 @@ def getInvoice(content :str):
     
     except Exception as e:
         
-        print(f"Erorr Parser objInvoice = {e}")    
+        print(f"ERROR Parser objInvoice = {e}")    
     
     return objInvoice
     
