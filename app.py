@@ -13,11 +13,11 @@ def read_root():
     return {"Status": "Online"}
 
 
-@app.post("/upload/")
-async def receiveUploadFile(file:UploadFile):
+@app.post("/upload/Invoice")
+async def receiveUploadFile(invoice:UploadFile):
     
    
-   content = await file.read() 
+   content = await invoice.read() 
    
    
    text = pdf_Process(content)
@@ -27,4 +27,4 @@ async def receiveUploadFile(file:UploadFile):
    response = getInvoice(text)
    
 
-   return {"file_content":response}
+   return {"Invoice":response}
