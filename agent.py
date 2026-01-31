@@ -11,7 +11,6 @@ class Spent(BaseModel):
     date:str = Field(description="Data")
     description:str = Field(description="Descrição")    
     value:str = Field(description="Valor gasto com o símbolo da moeda, ex: R$ 10,00")
-    category:str = Field(description="Categoria do gasto a partir da descrição do gasto, podendo ser Alimentação ou Supermercado ou Lazer ou Transporte ou Despesas ou Outros")
 
 class Invoice(BaseModel):
     
