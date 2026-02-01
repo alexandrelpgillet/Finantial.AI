@@ -1,3 +1,0 @@
-GEMINI_API_KEY='api_key'
-GOOGLE_GENAI_USE_VERTEXAI=true
-GOOGLE_CLOUD_PROJECT='id_google_cloud_project'

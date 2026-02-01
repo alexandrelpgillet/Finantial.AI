@@ -1,9 +1,9 @@
 
 from fastapi import FastAPI, File, UploadFile
 from typing import Union
-from api.pdfRead import pdf_Process
-from api.nlpFilter import filterText
-from api.agent import getInvoice
+from pdfRead import pdf_Process
+from nlpFilter import filterText
+from agent import getInvoice
 
 
 app = FastAPI()
