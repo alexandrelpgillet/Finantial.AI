@@ -40,6 +40,7 @@ Financy.AI is a software was a service(SAAS), your general porpouse is managemen
 |Setup Tools| 80.10.2| 
 |Python-dotenv| 1.2.1|
 |Pydantic|2.12.5|
+|Faker|40.1.2|
 
 ## Spacy's data set using for stemming
 
