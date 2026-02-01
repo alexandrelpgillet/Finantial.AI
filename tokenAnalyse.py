@@ -267,7 +267,7 @@ Página 3/3'''
 
 
 
-nlp = spacy.load("pt_core_news_sm")
+nlp = spacy.load("pt_core_news_lg")
 
 
 doc = nlp(text)

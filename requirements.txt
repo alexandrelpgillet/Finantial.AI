@@ -1,15 +1,12 @@
-pymupdf
-matplotlib
-pandas
-numpy
+pymupdf == 1.26.7
 pip
-setuptools
-wheel
-spacy
-trasnformers
-pytorch
-fastapi
-langchain
-langchain-google-genai
-dotenv
-pytdantic
+setuptools == 80.10.2
+wheel == 0.46.3
+spacy == 3.8.11
+https://github.com/explosion/spacy-models/releases/download/pt_core_news_lg-3.8.0/pt_core_news_lg-3.8.0-py3-none-any.whl
+transformers[torch] ==5.0.0
+fastapi[standard]== 0.128.0
+langchain == 1.2.7
+langchain-google-genai == 4.2.0
+python-dotenv == 1.2.1
+pydantic == 2.12.5
