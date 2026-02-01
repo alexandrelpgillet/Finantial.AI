@@ -52,34 +52,72 @@ fastapi dev app.py
 ```
 
 
-### /upload/
+### /upload/invoice
 
 
 ```
 
 {
-    "file_content": {
-        "content": content_text  
-        "additional_kwargs": {},
-        "response_metadata": {
-            "finish_reason": "STOP",
-            "model_name": "gemini-2.5-flash-lite",
-            "safety_ratings": [],
-            "model_provider": "google_genai"
-        },
-        "type": "ai",
-        "name": null,
-        "id": "lc_run--019c107d-d296-7b30-88bc-c2c0fdab81da-0",
-        "tool_calls": [],
-        "invalid_tool_calls": [],
-        "usage_metadata": {
-            "input_tokens": 1696,
-            "output_tokens": 580,
-            "total_tokens": 2276,
-            "input_token_details": {
-                "cache_read": 0
+    "Invoice": {
+        "total": "R$ 415,00",
+        "spents": [
+            {
+                "date": "05/09",
+                "description": "NITROXX GAMES GOIANIA",
+                "value": "R$ 22,50"
+            },
+            {
+                "date": "01/09",
+                "description": "DL GOOGLE CLOUD 6BPKv Sao Pablo",
+                "value": "R$ 30,74"
+            },
+            {
+                "date": "02/09",
+                "description": "CURITIBA",
+                "value": "R$ 12,90"
+            },
+            {
+                "date": "06/09",
+                "description": "DM gotindercomhelp Sao Paulo",
+                "value": "R$ 35,99"
+            },
+            {
+                "date": "08/09",
+                "description": "SPARKS COMMUNICATIONS PETAH TIQWA IL",
+                "value": "R$ 20,77"
+            },
+            {
+                "date": "29/09",
+                "description": "RESPONDE AI RIO DE JANEIR",
+                "value": "R$ 47,50"
+            },
+            {
+                "date": "08/09",
+                "description": "DL*GOOGLE 2nd Li SAO PAULO",
+                "value": "R$ 89,99"
+            },
+            {
+                "date": "15/09",
+                "description": "PPRO MICROSOFT SAO PAULO",
+                "value": "R$ 25,00"
+            },
+            {
+                "date": "19/09",
+                "description": "DL*GOOGLE ChatGP SAO PAULO",
+                "value": "R$ 95,99"
+            },
+            {
+                "date": "29/09",
+                "description": "PROTECAO OURO",
+                "value": "R$ 3,00"
+            },
+            {
+                "date": "01/09",
+                "description": "KIWIFY Betos PARC",
+                "value": "R$ 29,90"
             }
-        }
+        ],
+        "tax": "R$ 0,72"
     }
 }
 

@@ -13,7 +13,7 @@ def read_root():
     return {"Status": "Online"}
 
 
-@app.post("/upload/Invoice")
+@app.post("/upload/invoice")
 async def receiveUploadFile(invoice:UploadFile):
     
    
