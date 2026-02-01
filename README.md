@@ -19,15 +19,32 @@ Financy.AI is a software was a service(SAAS), your general porpouse is managemen
 
 |Name|Version|
 |----|-------|
-|Python|       |
-|Fast API       |       |
-|Pymupdf| |
-|SpaCy|  |
-|Google Gemini Flash|  |
-|LangChain| |
+|Python|3.12.3|
+|Pip     |24.0|
+|Google Gemini Flash|gemini-2.5-flash-lite|
 |PostgreSQL| |
 |Docker| |
 |WhatsApp Official API| |
+
+## Python's libraries using for development Financy.AI
+
+|Name|Version|
+|----|-------|
+|FastAPI|0.128.0|
+|Pymupdf|1.26.7|
+|SpaCy|3.8.11|
+|Transformers|5.0.0|
+|LangChain|1.2.7|
+|LangChain-Google-GenAi|4.2.0|
+|Wheel| 0.46.3|
+|Setup Tools| 80.10.2| 
+|Python-dotenv| 1.2.1|
+|Pydantic|2.12.5|
+
+## Spacy's data set using for stemming
+
+|Name|Version|
+|pt_core_news_lg|3.8.0|
 
 
 
@@ -43,9 +60,12 @@ Financy.AI is a software was a service(SAAS), your general porpouse is managemen
 ### Start project
 
 ```
+
+python3 -m venv .venv
+
 source .venv/bin/activate
 
-pip install -m requirements.txt
+pip install -r requirements.txt
 
 fastapi dev app.py
 
