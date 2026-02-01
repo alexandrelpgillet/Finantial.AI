@@ -282,6 +282,8 @@ words_fix = [
 
 text_filtred = " ".join(words_fix)
 
+print(text_filtred)
+
 
 tokenizer = AutoTokenizer.from_pretrained("google/gemma-2-2b")
 
