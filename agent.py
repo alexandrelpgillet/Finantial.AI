@@ -5,6 +5,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import PydanticOutputParser
 from typing import List
+from decimal import Decimal, ROUND_HALF_UP
 
 class Spent(BaseModel):
     
@@ -15,8 +16,9 @@ class Spent(BaseModel):
 class Invoice(BaseModel):
     
     total: str = Field(description="Valor total gasto com símbolo de moeda, ex : R$ 99,00")
-    spents: List[Spent] = Field(description="Lista de gastos")
+    spents: List[Spent] = Field(description="Lista de gastos, que não inclua o pagamento da fatura do mês anterior")
     tax: str = Field(description="Valor total de gasto envolvendo impostos e taxas bancárias, como IOF e juros e gastos com descrição IOF e Juros, com símbolo de moeda, ex : R$ 83,00  ")
+
 def getInvoice(content :str):
     
     
@@ -53,6 +55,41 @@ def getInvoice(content :str):
     try:
         
         objInvoice = parser.parse(response.content)
+        
+        
+        
+        spentsInvoice = Decimal("0.00")
+        
+        strTotal = objInvoice.total.replace("R$","").replace(".","").replace(",",".").strip()
+        
+        spentTotal = Decimal(strTotal).quantize(Decimal('0.00'),rounding=ROUND_HALF_UP)
+        
+        
+        
+        for spend in objInvoice.spents:
+            
+            strValue = spend.value.replace("R$", "").replace(".","").replace(",", ".").strip()
+            
+            value = Decimal(strValue).quantize(Decimal('0.00'), rounding=ROUND_HALF_UP)
+            
+            spentsInvoice = spentsInvoice + value
+        
+        
+        strTax = objInvoice.tax.replace("R$","").replace(".","").replace(",",".").strip()
+        
+        tax = Decimal(strTax).quantize(Decimal('0.00'),rounding=ROUND_HALF_UP)
+        
+        spentsInvoice = spentsInvoice + tax
+        
+        
+        
+        
+        ##Criar validação de resultados
+        print(f"Valor total somado ={spentsInvoice}")
+        
+        print(spentsInvoice==spentTotal)    
+        
+        
     
     except Exception as e:
         
