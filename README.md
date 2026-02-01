@@ -44,6 +44,7 @@ Financy.AI is a software was a service(SAAS), your general porpouse is managemen
 ## Spacy's data set using for stemming
 
 |Name|Version|
+|----|-------|
 |pt_core_news_lg|3.8.0|
 
 
