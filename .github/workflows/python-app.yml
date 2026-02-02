@@ -40,7 +40,7 @@ jobs:
     - name: Test with pytest
       
       env:
-        GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+        GOOGLE_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         GOOGLE_GENAI_USE_VERTEXAI: ${{ secrets.GOOGLE_GENAI_USE_VERTEXAI }}
         GOOGLE_CLOUD_PROJECT: ${{ secrets.GOOGLE_CLOUD_PROJECT}}
       run: |
