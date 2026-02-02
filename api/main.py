@@ -1,12 +1,10 @@
-
-from fastapi import FastAPI, File, UploadFile
-from typing import Union
+from fastapi import FastAPI, UploadFile
 from api.pdfRead import pdf_Process
 from api.nlpFilter import filterText
 from api.agent import getInvoice
 
-
 app = FastAPI()
+
 
 @app.get("/status")
 def read_root():
@@ -14,17 +12,14 @@ def read_root():
 
 
 @app.post("/upload/invoice")
-async def receiveUploadFile(invoice:UploadFile):
-    
-   
-   content = await invoice.read() 
-   
-   
-   text = pdf_Process(content)
-   
-   text = filterText(text)
-   
-   response = getInvoice(text)
-   
+async def receiveUploadFile(invoice: UploadFile):
 
-   return {"Invoice":response}
+    content = await invoice.read()
+
+    text = pdf_Process(content)
+
+    text = filterText(text)
+
+    response = getInvoice(text)
+
+    return {"Invoice": response}

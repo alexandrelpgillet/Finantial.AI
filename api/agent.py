@@ -1,4 +1,3 @@
-import os
 from pydantic import BaseModel, Field
 from dotenv import load_dotenv
 from langchain_google_genai import ChatGoogleGenerativeAI
@@ -7,95 +6,109 @@ from langchain_core.output_parsers import PydanticOutputParser
 from typing import List
 from decimal import Decimal, ROUND_HALF_UP
 
+
 class Spent(BaseModel):
-    
-    date:str = Field(description="Data")
-    description:str = Field(description="Descrição")    
-    value:str = Field(description="Valor gasto com o símbolo da moeda, ex: R$ 10,00")
+
+    date: str = Field(description="Data")
+
+    description: str = Field(description="Descrição")
+
+    value: str = Field(description="Valor gasto com o símbolo da moeda, ex: R$ 10,00")
+
 
 class Invoice(BaseModel):
-    
-    total: str = Field(description="Valor total gasto com símbolo de moeda, ex : R$ 99,00")
-    spents: List[Spent] = Field(description="Lista de gastos, que não inclua o pagamento da fatura do mês anterior")
-    tax: str = Field(description="Valor total de gasto envolvendo impostos e taxas bancárias, como IOF e juros e gastos com descrição IOF e Juros, com símbolo de moeda, ex : R$ 83,00  ")
 
-def getInvoice(content :str):
-    
-    
+    total: str = Field(
+        description="Valor total gasto com símbolo de moeda, ex : R$ 99,00"
+    )
+
+    spents: List[Spent] = Field(description="""Lista de gastos, que não inclua
+o pagamento da fatura do mês anterior""")
+
+    tax: str = Field(
+        description="""Valor total de gasto envolvendo impostos e taxas bancárias,
+como IOF e juros e gastos com descrição IOF e Juros,
+com símbolo de moeda, ex : R$ 83,00"""
+    )
+
+
+def getInvoice(content: str):
+
     load_dotenv()
-    
+
     model = ChatGoogleGenerativeAI(model="gemini-2.5-flash-lite")
-    
+
     parser = PydanticOutputParser(pydantic_object=Invoice)
-    
-    
-    
-    prompt = ChatPromptTemplate.from_messages([
-        
-        ("system"," Você é um assistente financeiro que analisa faturas de cartões de crédio,a  partir do conteúdo da fatura enviado pelo usuário extraia o valor total da fatura  e  faça a descrição de cada gasto.\n{format_instruction}"),
-        ("user","Aqui está o conteúdo da fatura:\n\n {content}")
-    ])
-    
+
+    prompt = ChatPromptTemplate.from_messages(
+        [
+            (
+                "system",
+                """ Você é um assistente financeiro
+que analisa faturas de cartões de crédio,
+a partir do conteúdo da fatura enviado pelo usuário
+extraia o valor total da fatura  e
+faça a descrição de cada gasto.\n{format_instruction}""",
+            ),
+            ("user", "Aqui está o conteúdo da fatura:\n\n {content}"),
+        ]
+    )
+
     chain = prompt | model
-    
-    response = chain.invoke({"content":content,"format_instruction":parser.get_format_instructions()})
-    
-    
+
+    response = chain.invoke(
+        {"content": content, "format_instruction": parser.get_format_instructions()}
+    )
+
     tokens_entrada = response.usage_metadata.get("input_tokens")
     tokens_saida = response.usage_metadata.get("output_tokens")
     total = response.usage_metadata.get("total_tokens")
-    
-    
-    ##Salvar no banco de dados de histórico com metricas
+
+    # Salvar no banco de dados de histórico com metricas
     print(f"Custo de Entrada: {tokens_entrada} tokens")
     print(f"Custo de Saída: {tokens_saida} tokens")
-    print(f"Total: {total} tokens")    
-    
-    
+    print(f"Total: {total} tokens")
+
     try:
-        
+
         objInvoice = parser.parse(response.content)
-        
-        
-        
+
         spentsInvoice = Decimal("0.00")
-        
-        strTotal = objInvoice.total.replace("R$","").replace(".","").replace(",",".").strip()
-        
-        spentTotal = Decimal(strTotal).quantize(Decimal('0.00'),rounding=ROUND_HALF_UP)
-        
-        
-        
+
+        strTotal = (
+            objInvoice.total.replace("R$", "")
+            .replace(".", "")
+            .replace(",", ".")
+            .strip()
+        )
+
+        spentTotal = Decimal(strTotal).quantize(Decimal("0.00"), rounding=ROUND_HALF_UP)
+
         for spend in objInvoice.spents:
-            
-            strValue = spend.value.replace("R$", "").replace(".","").replace(",", ".").strip()
-            
-            value = Decimal(strValue).quantize(Decimal('0.00'), rounding=ROUND_HALF_UP)
-            
+
+            strValue = (
+                spend.value.replace("R$", "").replace(".", "").replace(",", ".").strip()
+            )
+
+            value = Decimal(strValue).quantize(Decimal("0.00"), rounding=ROUND_HALF_UP)
+
             spentsInvoice = spentsInvoice + value
-        
-        
-        strTax = objInvoice.tax.replace("R$","").replace(".","").replace(",",".").strip()
-        
-        tax = Decimal(strTax).quantize(Decimal('0.00'),rounding=ROUND_HALF_UP)
-        
+
+        strTax = (
+            objInvoice.tax.replace("R$", "").replace(".", "").replace(",", ".").strip()
+        )
+
+        tax = Decimal(strTax).quantize(Decimal("0.00"), rounding=ROUND_HALF_UP)
+
         spentsInvoice = spentsInvoice + tax
-        
-        
-        
-        
-        ##Criar validação de resultados
+
+        # Criar validação de resultados
         print(f"Valor total somado ={spentsInvoice}")
-        
-        print(spentsInvoice==spentTotal)    
-        
-        
-    
+
+        print(spentsInvoice == spentTotal)
+
     except Exception as e:
-        
-        print(f"ERROR Parser objInvoice = {e}")    
-    
+
+        print(f"ERROR Parser objInvoice = {e}")
+
     return objInvoice
-    
-    
-    
