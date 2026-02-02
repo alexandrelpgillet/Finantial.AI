@@ -82,7 +82,6 @@ source .venv/bin/activate
 black .
     
 flake8 .
-
 ```
 
 ### /upload/invoice
