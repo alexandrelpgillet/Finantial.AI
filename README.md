@@ -73,6 +73,17 @@ fastapi dev app.py
 
 ```
 
+### Format the project according to PEP8.
+
+``` 
+
+source .venv/bin/activate
+
+black .
+    
+flake8 .
+
+```
 
 ### /upload/invoice
 
