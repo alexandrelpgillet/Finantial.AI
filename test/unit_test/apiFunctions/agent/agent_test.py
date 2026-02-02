@@ -4,7 +4,7 @@ from api.agent import getInvoice
 
 def test_getInvoice():
 
-    with open("test/unit_test/agent_test_case/example.txt", "r", encoding="utf-8") as archive:
+    with open("test/unit_test/apiFunctions/agent/agent_test_case/example.txt", "r", encoding="utf-8") as archive:
         content = archive.read()
 
     response = getInvoice(content)
