@@ -1,0 +1,32 @@
+Propriedades do Gálio: Número atómico igual a 31, ponto de fusão 29.76 graus 
+celsius(metal líquido a temperatura ambiente), ponto de ebulição 2400 graus 
+celsius  celsius família IIIA ,  na sua forma pura de Ga2 apresentar uma estrtura 
+cristalina tetragonal, com os estados de oxidação mais comuns são +1 e +3 
+(possuindo tendência de formar óxidos anfóteros), sendo um semicondutor de 
+eletricidade. 
+Na natureza o Ga2 não é encontrado na forma pura, mais sim agregado a míneros 
+de alumínio sob forma de hidróxido, zinco.Energia de dissociação = 110 kj/mol 
+ 
+Propriedades do Arsênio (Ametal): Número atômico igual a 33,  ponto de fusão de 
+816.8 graus celsius , ponto de ebulição de 613 graus celsius. O arsênio é 
+encontrada na natureza associada a outras moléculas como oxigênio, cloro e 
+enxofre. No geral a sua forma pura é obtida a partir de arsenopirita FeAsS , realgar 
+(As4S4) e ouropigmento(As2S3), dessa forma a partir do aquecimento desses 
+reagentes obtense o As4 na forma pura.No caso do arsênio vale ressaltar a sua 
+alta toxicidade para os humanos.A forma que o As4 formam uma geômetra 
+tetraédrica,  com uma energia de Dissociação >=150-200kj/mol 
+ 
+Formação de GaAs: 
+8Ga2(l) + As4(g) -> 16GaAs (sólido)  
+Delta H = -78kJ/mol(reação exotérmica) 
+-Falar dos desafios técnicos na produção de GaAs 
+ 
+Estrutura do GaAs: 
+-Estrutura cristalina,  
+ 
+
+Produção de GaAs : Técnica Liquid Encpasulated Cochraslki
+ 
+ 
+Periodic Table of Elements: Los Alamos National Laboratory 
+Arsênio (As): características, precauções, história
