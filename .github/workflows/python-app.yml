@@ -17,6 +17,8 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    environment: ENV
+
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python 3.12.3
