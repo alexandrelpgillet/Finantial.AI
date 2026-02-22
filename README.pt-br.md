@@ -1,37 +1,37 @@
 # Financy.AI
 
-[![pt-br](https://img.shields.io/badge/lang-pt--br-green.svg)](README.pt-br.md)
+[![en](https://img.shields.io/badge/lang-en-red.svg)](README.md)
 
-Financy.AI is a software was a service(SAAS), your general porpouse is management the user's personal expenses.
-
-
-## Diferencial between Financy.AI and other Financial's Management Software 
+Financy.AI é um software como serviço (SAAS), seu propósito geral é gerenciar as despesas pessoais do usuário.
 
 
-* Integration with WhatsApp;
-* Essential tools for user managent your financial expenses;
-* Using AI for scanner all financial expenses in .pdf format;
-
-## Financy.AI functionalities 
-
-![This is a functionality diagram about Financy.AI](/imgs/diagramFunctionalites.svg)
+## Diferencial entre o Financy.AI e outros softwares de gestão financeira
 
 
-## Technologies using for development Financy.AI
+* Integração com WhatsApp;
+* Ferramentas essenciais para o usuário gerenciar suas despesas financeiras;
+* Uso de IA para escanear todas as despesas financeiras em formato .pdf;
 
-|Name|Version|
-|----|-------|
+## Funcionalidades do Financy.AI
+
+![Este é um diagrama de funcionalidades do Financy.AI](/imgs/diagramFunctionalites.svg)
+
+
+## Tecnologias utilizadas no desenvolvimento do Financy.AI
+
+|Nome|Versão|
+|----|------|
 |Python|3.12.3|
 |Pip     |24.0|
 |Google Gemini Flash|gemini-2.5-flash-lite|
 |PostgreSQL| |
 |Docker| |
-|WhatsApp Official API| |
+|API Oficial do WhatsApp| |
 
-## Python's libraries using for development Financy.AI
+## Bibliotecas Python utilizadas no desenvolvimento do Financy.AI
 
-|Name|Version|
-|----|-------|
+|Nome|Versão|
+|----|------|
 |FastAPI|0.128.0|
 |Pymupdf|1.26.7|
 |SpaCy|3.8.11|
@@ -47,24 +47,24 @@ Financy.AI is a software was a service(SAAS), your general porpouse is managemen
 |Flakek8|7.3.0|
 |Black|26.1.0|
 
-## Spacy's data set using for stemming
+## Dataset do SpaCy utilizado para stemização
 
-|Name|Version|
-|----|-------|
+|Nome|Versão|
+|----|------|
 |pt_core_news_lg|3.8.0|
 
 
 
-## Virtual Private Server pre-requisites
+## Pré-requisitos do Servidor Virtual Privado (VPS)
 
 
 * 2 vCPU;
 * 8 GB RAM;
-* 100 GB Storage;
-* System Operational : Ubuntu 24.04 LTS;
+* 100 GB Armazenamento;
+* Sistema Operacional: Ubuntu 24.04 LTS;
 
 
-### Start project
+### Iniciar o projeto
 
 ```
 
@@ -78,7 +78,7 @@ fastapi dev app.py
 
 ```
 
-### Format the project according to PEP8.
+### Formatar o projeto de acordo com a PEP8
 
 ``` 
 
